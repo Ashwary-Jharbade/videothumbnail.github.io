@@ -8,7 +8,6 @@
 <body>
 	<input type="file" id="file">
 	<button onclick="showThumbnail()">Upload</button>
-	<button onclick="capture()">Capture</button>
 	<div id="info"></div>
 	<div>
 		<video width="400px" height="300px" src="" id="video"></video>
@@ -19,7 +18,8 @@
 			const video = document.getElementById("video");
 			const info = document.getElementById("info");
 			info.innerHTML = "...loading";
-			const fileUrl = window.URL.createObjectURL(file);
+			const URL = window.URL || window.webkitURL;
+			const fileUrl = URL.createObjectURL(file);
 			video.setAttribute("src", fileUrl + "#t=0.1");
 			info.innerHTML = fileUrl;
 		}
