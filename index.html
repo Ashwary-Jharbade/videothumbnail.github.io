@@ -13,37 +13,16 @@
 	<div>
 		<video width="400px" height="300px" src="" id="video"></video>
 	</div>
-	<div><canvas id="canvas" style="overflow:auto"></div>
 	<script type="text/javascript">
 		function showThumbnail() {
 			const file = document.getElementById("file").files[0];
 			const video = document.getElementById("video");
 			const info = document.getElementById("info");
 			info.innerHTML = "...loading";
-			const fileUrl = URL.createObjectURL(file);
-			// video.setAttribute("poster", fileUrl + "#t=0.1");
+			const fileUrl = window.URL.createObjectURL(file);
 			video.setAttribute("src", fileUrl + "#t=0.1");
 			info.innerHTML = fileUrl;
-		}
-		function capture() {
-		  var canvas = document.getElementById("canvas");
-		  var video = document.querySelector("video");
-		  canvas.width = video.videoWidth;
-		  canvas.height = video.videoHeight;
-		  canvas.getContext("2d").drawImage(video, 0, 0, 400, 300);
-		  const playImage = new Image();
-		  playImage.src = "path to image asset";
-		  playImage.onload = () => {
-		    const startX = 400 / 2 - playImage.width / 2;
-		    const startY = 300 / 2 - playImage.height / 2;
-		    canvas.getContext("2d").drawImage(playImage, startX, startY, playImage.width, playImage.height);
-		    canvas.toBlob() = (blob) => {
-		      const img = new Image();
-		      img.src = window.URL.createObjectUrl(blob);
-		    };
-		  };
 		}
 	</script>
 </body>
 </html>
-	
