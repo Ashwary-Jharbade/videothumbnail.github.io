@@ -8,6 +8,7 @@
 <body>
 	<input type="file" id="file">
 	<button onclick="showThumbnail()">Upload</button>
+	<button onclick="getBase64()">Base 64</button>
 	<div id="info"></div>
 	<div>
 		<video width="400px" height="300px" src="" id="video"></video>
@@ -16,12 +17,25 @@
 		function showThumbnail() {
 			const file = document.getElementById("file").files[0];
 			const video = document.getElementById("video");
+			const iframe = document.getElementById("iframe");
 			const info = document.getElementById("info");
 			info.innerHTML = "...loading";
 			const URL = window.URL || window.webkitURL;
 			const fileUrl = URL.createObjectURL(file);
 			video.setAttribute("src", fileUrl + "#t=0.1");
 			info.innerHTML = fileUrl;
+		}
+		function getBase64() {
+		    const file = document.getElementById("file").files[0];
+			const video = document.getElementById("video");
+		   	var reader = new FileReader();
+		   	reader.readAsDataURL(file);
+		   	reader.onload = function () {
+		   		video.setAttribute("src", reader.result + "#t=0.1");
+		   	};
+		   	reader.onerror = function (error) {
+		    	console.log('Error: ', error);
+		   	};
 		}
 	</script>
 </body>
