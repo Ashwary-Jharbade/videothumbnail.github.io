@@ -18,8 +18,7 @@
 			const info = document.getElementById("info");
 			info.innerHTML = "...loading";
 			const fileUrl = URL.createObjectURL(file);
-			video.setAttribute("poster", fileUrl + "#t=0.1");
-			// video.setAttribute("src", fileUrl + "#t=0.1");
+			video.setAttribute("src", fileUrl + "#t=0.1");
 			info.innerHTML = fileUrl;
 		}
 	</script>
